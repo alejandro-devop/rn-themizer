@@ -1,2 +1,4 @@
-import SomeComponent from './SomeComponent';
-export { SomeComponent };
+import ThemeProvider from './theme-provider/ThemeProvider';
+import useStyling from './use-styling';
+export * from './types';
+export { ThemeProvider, useStyling };
