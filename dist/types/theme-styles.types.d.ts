@@ -20,10 +20,10 @@ declare type StyleDefAsFunctionType<Guide, Params> = (params: StyleFunctionConfi
     [key: string]: StyleProp<any>;
 };
 declare type StyleDefAsObjecttype = {
-    [key: string]: StyleProp<ThemeStyleType>;
+    [key: string]: StyleProp<any>;
 };
 /**
  * This defines the styling method, if function or object
  */
-declare type StyleDefType<StyleGuide extends object, Params extends object = {}> = StyleDefAsFunctionType<StyleGuide, Params> | StyleDefAsObjecttype;
+declare type StyleDefType<StyleGuide extends object = {}, Params extends object = {}> = StyleDefAsFunctionType<StyleGuide, Params> | StyleDefAsObjecttype;
 export default StyleDefType;

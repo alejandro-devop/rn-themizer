@@ -34,11 +34,11 @@ type StyleDefAsFunctionType<Guide, Params> = (
     params: StyleFunctionConfigType<Params>
 ) => Guide | { [key: string]: StyleProp<any> }
 
-type StyleDefAsObjecttype = { [key: string]: StyleProp<ThemeStyleType> }
+type StyleDefAsObjecttype = { [key: string]: StyleProp<any> }
 /**
  * This defines the styling method, if function or object
  */
-type StyleDefType<StyleGuide extends object, Params extends object = {}> =
+type StyleDefType<StyleGuide extends object = {}, Params extends object = {}> =
     | StyleDefAsFunctionType<StyleGuide, Params>
     | StyleDefAsObjecttype
 

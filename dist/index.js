@@ -79,6 +79,15 @@ var useThemeConfig = function () {
     return themeConfig;
 };
 
+/**
+ * Hook to create styles for your components
+ * @author Alejandro Quiroz <alejandro.devop@gmail.com>
+ * @version 0.0.1
+ * @since 0.0.1
+ * @param stylingConfig Styling configuration, can be a function or an object
+ * @param params Object containing params for the styling function.
+ * @returns
+ */
 var useStyling = function (stylingConfig, params) {
     var palette = useThemeConfig().palette;
     var classes = React__default.default.useMemo(function () {
@@ -126,8 +135,12 @@ var ThemeDebug = function () {
 };
 
 /**
+ * Provider for theming react-native applications
  * @param param0
- * @returns
+ * @author Alejandro Quiroz <alejandro.devop@gmail.com>
+ * @version 0.0.1
+ * @since 0.0.1
+ * @returns {React.ReactNode}
  */
 var ThemeProvider = function (_a) {
     var children = _a.children, defaultTheme = _a.defaultTheme, mode = _a.mode, themes = _a.themes, debug = _a.debug;
