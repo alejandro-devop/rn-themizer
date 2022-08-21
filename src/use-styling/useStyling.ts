@@ -28,7 +28,10 @@ const useStyling = <StyleGuide extends object, Params extends object = {}>(
             processed = stylingConfig({
                 palette,
                 params,
-                selIf: _helperSelIf
+                selIf: _helperSelIf,
+                applyIf: _applyIf,
+                applyFor: _applyFor,
+                valueFor: _valueFor
             })
         }
         return StyleSheet.create(processed)
@@ -39,5 +42,23 @@ const useStyling = <StyleGuide extends object, Params extends object = {}>(
 
 const _helperSelIf = (cond?: boolean, trueVal?: StyleProp<any>, falseVal?: StyleProp<any>) =>
     cond ? trueVal : falseVal
+
+const _applyIf = (cond?: boolean, styles?: any) => (cond ? styles : {})
+
+const _applyFor = (value?: string, styles?: { [k: string]: any }) => {
+    if (value && styles && styles[value]) {
+        return styles[value]
+    } else {
+        return {}
+    }
+}
+
+const _valueFor = (value?: string, styles?: { [k: string]: any }) => {
+    if (value && styles && styles[value]) {
+        return styles[value]
+    } else {
+        return styles?._default ? styles?._default : null
+    }
+}
 
 export default useStyling

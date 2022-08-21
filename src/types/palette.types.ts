@@ -29,9 +29,11 @@ export type PaletteConfigType = {
     warningText?: string
     /** Colors for buttons */
     buttons?: {
+        default?: string
         primaryColor?: string
         secondaryColor?: string
         textColor?: string
+        defaultTextColor?: string
     }
 }
 type PaletteType = {

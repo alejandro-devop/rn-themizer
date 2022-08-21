@@ -14,6 +14,13 @@ type HelperSelIf<ValueType = any> = (
     falseValue?: StyleProp<ValueType>
 ) => StyleProp<ValueType>
 
+type HelperApplyIf<ValueType = any> = (
+    condition?: boolean,
+    styles?: StyleProp<ValueType>
+) => StyleProp<ValueType>
+
+type HelperApplyFor = (value?: any, styles?: { [k: string]: ThemeStyleType }) => ThemeStyleType
+type HelperValueFor = (value?: any, styles?: { [k: string]: StyleProp<any> }) => StyleProp<any>
 /**
  * This defines the properties passed to the styling function when it is invoked
  */
@@ -21,6 +28,9 @@ type StyleFunctionConfigType<Params> = {
     params?: Params
     palette: PaletteConfigType
     selIf: HelperSelIf
+    applyIf: HelperApplyIf
+    applyFor: HelperApplyFor
+    valueFor: HelperValueFor
 }
 /**
  * Possible values for the Theme styling

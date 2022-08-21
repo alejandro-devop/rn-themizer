@@ -101,7 +101,10 @@ var useStyling = function (stylingConfig, params) {
             processed = stylingConfig({
                 palette: palette,
                 params: params,
-                selIf: _helperSelIf
+                selIf: _helperSelIf,
+                applyIf: _applyIf,
+                applyFor: _applyFor,
+                valueFor: _valueFor
             });
         }
         return reactNative.StyleSheet.create(processed);
@@ -110,6 +113,23 @@ var useStyling = function (stylingConfig, params) {
 };
 var _helperSelIf = function (cond, trueVal, falseVal) {
     return cond ? trueVal : falseVal;
+};
+var _applyIf = function (cond, styles) { return (cond ? styles : {}); };
+var _applyFor = function (value, styles) {
+    if (value && styles && styles[value]) {
+        return styles[value];
+    }
+    else {
+        return {};
+    }
+};
+var _valueFor = function (value, styles) {
+    if (value && styles && styles[value]) {
+        return styles[value];
+    }
+    else {
+        return (styles === null || styles === void 0 ? void 0 : styles._default) ? styles === null || styles === void 0 ? void 0 : styles._default : null;
+    }
 };
 
 /**
