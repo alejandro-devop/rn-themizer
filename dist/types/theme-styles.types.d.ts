@@ -1,5 +1,6 @@
 import { PaletteConfigType } from './palette.types';
 import { ViewStyle, TextStyle, ImageStyle, FlexStyle, TransformsStyle, StyleProp } from 'react-native';
+import VariablesType from './variables.types';
 declare type HelperSelIf<ValueType = any> = (condition?: boolean, trueValue?: StyleProp<ValueType>, falseValue?: StyleProp<ValueType>) => StyleProp<ValueType>;
 declare type HelperApplyIf<ValueType = any> = (condition?: boolean, styles?: StyleProp<ValueType>) => StyleProp<ValueType>;
 declare type HelperApplyFor = (value?: any, styles?: {
@@ -8,6 +9,8 @@ declare type HelperApplyFor = (value?: any, styles?: {
 declare type HelperValueFor = (value?: any, styles?: {
     [k: string]: StyleProp<any>;
 }) => StyleProp<any>;
+declare type HelperFromPalette = (key: string, defValue?: any) => any;
+declare type HelperFromVars = (key: string, defValue?: any) => any;
 /**
  * This defines the properties passed to the styling function when it is invoked
  */
@@ -18,6 +21,9 @@ declare type StyleFunctionConfigType<Params> = {
     applyIf: HelperApplyIf;
     applyFor: HelperApplyFor;
     valueFor: HelperValueFor;
+    fromPalette: HelperFromPalette;
+    fromVars: HelperFromVars;
+    variables?: VariablesType;
 };
 /**
  * Possible values for the Theme styling

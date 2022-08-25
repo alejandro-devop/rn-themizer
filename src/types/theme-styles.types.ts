@@ -7,6 +7,7 @@ import {
     TransformsStyle,
     StyleProp
 } from 'react-native'
+import VariablesType from './variables.types'
 
 type HelperSelIf<ValueType = any> = (
     condition?: boolean,
@@ -21,6 +22,9 @@ type HelperApplyIf<ValueType = any> = (
 
 type HelperApplyFor = (value?: any, styles?: { [k: string]: ThemeStyleType }) => ThemeStyleType
 type HelperValueFor = (value?: any, styles?: { [k: string]: StyleProp<any> }) => StyleProp<any>
+type HelperFromPalette = (key: string, defValue?: any) => any
+type HelperFromVars = (key: string, defValue?: any) => any
+type HelperRem = (pixel: number) => number
 /**
  * This defines the properties passed to the styling function when it is invoked
  */
@@ -31,6 +35,9 @@ type StyleFunctionConfigType<Params> = {
     applyIf: HelperApplyIf
     applyFor: HelperApplyFor
     valueFor: HelperValueFor
+    fromPalette: HelperFromPalette
+    fromVars: HelperFromVars
+    variables?: VariablesType
 }
 /**
  * Possible values for the Theme styling

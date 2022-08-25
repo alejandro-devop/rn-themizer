@@ -1,8 +1,5 @@
 import PaletteType from './palette.types'
-
-type VariableValueType = string | number | boolean
-
-type VariablesType = { [k: string]: VariableValueType }
+import VariablesType from './variables.types'
 
 type ThemeConfigType = {
     palette: PaletteType

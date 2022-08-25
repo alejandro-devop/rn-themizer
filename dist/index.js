@@ -89,7 +89,20 @@ var useThemeConfig = function () {
  * @returns
  */
 var useStyling = function (stylingConfig, params) {
-    var palette = useThemeConfig().palette;
+    var _a = useThemeConfig(), palette = _a.palette, variables = _a.variables;
+    var extractFromSource = function (name, source, defaultValue) {
+        var _a = name.split('.'), firstKey = _a[0], parts = _a.slice(1);
+        var foundValue = parts.reduce(function (color, currentKey) {
+            if (color[currentKey]) {
+                color = color[currentKey];
+            }
+            return color;
+        }, source[firstKey]);
+        if (typeof foundValue === 'object') {
+            foundValue = null;
+        }
+        return foundValue || defaultValue;
+    };
     var classes = React__default.default.useMemo(function () {
         var processed = {};
         // Check if the styling config is a function
@@ -104,7 +117,14 @@ var useStyling = function (stylingConfig, params) {
                 selIf: _helperSelIf,
                 applyIf: _applyIf,
                 applyFor: _applyFor,
-                valueFor: _valueFor
+                valueFor: _valueFor,
+                fromVars: function (name, defaultVal) {
+                    return extractFromSource(name, variables, defaultVal);
+                },
+                fromPalette: function (name, defaultVal) {
+                    return extractFromSource(name, palette, defaultVal);
+                },
+                variables: variables
             });
         }
         return reactNative.StyleSheet.create(processed);
@@ -194,6 +214,12 @@ ThemeProvider.defaultProps = {
     darkModeDetection: false
 };
 
+var usePalette = function () {
+    var palette = useThemeConfig().palette;
+    return palette;
+};
+
 exports.ThemeProvider = ThemeProvider;
+exports.usePalette = usePalette;
 exports.useStyling = useStyling;
 //# sourceMappingURL=index.js.map

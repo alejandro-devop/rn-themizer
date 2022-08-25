@@ -27,6 +27,12 @@ export type PaletteConfigType = {
     warning?: string
     /** Color used for warning texts */
     warningText?: string
+    textField?: {
+        bgColor?: string
+        borderColor?: string
+        placeholderColor?: string
+    }
+
     /** Colors for buttons */
     buttons?: {
         default?: string

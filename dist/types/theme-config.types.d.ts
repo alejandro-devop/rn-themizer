@@ -1,8 +1,5 @@
 import PaletteType from './palette.types';
-declare type VariableValueType = string | number | boolean;
-declare type VariablesType = {
-    [k: string]: VariableValueType;
-};
+import VariablesType from './variables.types';
 declare type ThemeConfigType = {
     palette: PaletteType;
     variables?: VariablesType;
